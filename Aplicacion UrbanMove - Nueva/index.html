@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UrbanMove</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- ===== INICIO ===== -->
+
+<div id="inicio">
+
+<header>
+
+<h1>🚌 URBANMOVE</h1>
+
+<p>“Muévete por Guanajuato con seguridad y tecnología.”</p>
+
+<div class="botonesInicio">
+
+<button onclick="mostrarLogin()" class="btn">Iniciar Sesión</button>
+
+<button onclick="mostrarRegistro()" class="btn">Registrarse</button>
+
+</div>
+
+</header>
+
+</div>
+
+
+<!-- ===== REGISTRO ===== -->
+
+<div id="registro" class="pantalla">
+
+<h2>Registro de Usuario</h2>
+
+<label>Nombre</label>
+<input id="nombre">
+
+<label>Edad</label>
+<input id="edad">
+
+<label>Email</label>
+<input id="email">
+
+<label>Password</label>
+<input type="password" id="password">
+
+<label>Teléfono</label>
+<input id="telefono">
+
+<button onclick="registrarUsuario()" class="btn">Registrar</button>
+
+<br><br>
+
+<button onclick="mostrarLogin()" class="btn">Ir a Iniciar Sesión</button>
+
+</div>
+
+
+<!-- ===== LOGIN ===== -->
+
+<div id="login" class="pantalla">
+
+<h2>Iniciar Sesión</h2>
+
+<label>Email</label>
+<input id="loginEmail">
+
+<label>Password</label>
+<input type="password" id="loginPass">
+
+<button onclick="login()" class="btn">Entrar</button>
+  
+  <br><br>
+
+<button onclick="volverInicio()" class="btn-regresar">
+⬅ Regresar
+</button>
+
+</div>
+
+
+<!-- ===== APLICACION ===== -->
+
+<div id="app" class="pantalla">
+
+<header>
+
+<h1>🚌 URBANMOVE</h1>
+
+<p>
+Bienvenid@s al Sistema Inteligente de Transporte Urbano
+</p>
+  
+  <p class="descripcion">
+    Tu ruta segura, conectada y monitoreada en Guanajuato.
+    
+    </p>
+    
+
+</header>
+  
+  
+  <section class="sistema-inteligente">
+
+<h2 class="titulo-sistema">
+🚍 Sistema Inteligente de Movilidad Urbana
+</h2>
+
+<div class="card-sistema">
+
+<div class="texto-sistema">
+
+<p class="descripcion-sistema">
+
+UrbanMove es una solución tecnológica diseñada para transformar el transporte público mediante el uso de GPS en tiempo real, permitiendo monitorear las unidades, mejorar la seguridad de los usuarios y optimizar la eficiencia del servicio de movilidad urbana.
+
+</p>
+
+<ul class="lista-sistema">
+
+<li>✔ Monitoreo en tiempo real de unidades</li>
+
+<li>✔ Consulta de horarios precisos</li>
+
+<li>✔ Transparencia en tarifas</li>
+
+<li>✔ Protección al ciudadano</li>
+
+<li>✔ Reducción de tiempos de espera</li>
+
+<li>✔ Mejora en la eficiencia del transporte público</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+  
+  
+
+
+<section class="seccion">
+
+<h2>🗺️ Mapa Inteligente de Movilidad Urbana</h2>
+
+<p class="descripcion">
+
+El sistema utiliza mapas interactivos para representar la ciudad y simular el monitoreo de unidades de transporte público. Se visualizan paradas, rutas y el desplazamiento de autobuses, además de un tiempo estimado de llegada, demostrando cómo funcionaría un sistema de movilidad inteligente
+
+</p>
+
+<div id="map"></div>
+
+</section>
+
+
+
+<section class="seccion">
+
+<h2>⚠ Problemáticas Operativas del Transporte Público</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>1. Incumplimiento de horarios</h3>
+Irregularidad en frecuencias que afecta puntualidad.
+</div>
+
+<div class="card">
+<h3>2. Trato inadecuado</h3>
+Conductas inapropiadas que deterioran la experiencia.
+</div>
+
+<div class="card">
+<h3>3. Irregularidades en tarifas</h3>
+Falta de transparencia en tarifas.
+</div>
+
+<div class="card">
+<h3>4. Tiempos de espera prolongados</h3>
+Esperas de hasta una hora.
+</div>
+
+<div class="card">
+<h3>5. Falta de monitoreo GPS</h3>
+No hay seguimiento en tiempo real.
+</div>
+
+<div class="card">
+<h3>6. Deficiente mantenimiento</h3>
+Unidades en mal estado.
+</div>
+
+<div class="card">
+<h3>7. Saturación en horas pico</h3>
+Exceso de pasajeros.
+</div>
+
+<div class="card">
+<h3>8. Falta de canales digitales</h3>
+No existen plataformas oficiales.
+</div>
+
+</div>
+
+</section>
+
+
+<section class="seccion">
+
+<h2>🚨 Problemáticas Sociales y de Convivencia</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>1. Incumplimiento de asientos preferentes</h3>
+Espacios vulnerables ocupados sin intervención.
+</div>
+
+<div class="card">
+<h3>2. Falta de respeto a adultos mayores</h3>
+Adultos mayores obligados a viajar de pie.
+</div>
+
+<div class="card">
+<h3>3. Indiferencia ante mujeres embarazadas</h3>
+Falta de conciencia ciudadana.
+</div>
+
+<div class="card">
+<h3>4. Desatención a personas con discapacidad</h3>
+Dificultad de acceso y riesgo físico.
+</div>
+
+<div class="card">
+<h3>5. Falta de supervisión</h3>
+Operadores no intervienen ante incumplimientos.
+</div>
+
+<div class="card">
+<h3>6. Señalización ignorada</h3>
+Desinterés por respetar indicaciones.
+</div>
+
+<div class="card">
+<h3>7. Conflictos entre pasajeros</h3>
+Tensiones por asientos preferentes.
+</div>
+
+<div class="card">
+<h3>8. Riesgo para grupos vulnerables</h3>
+Posibles caídas y lesiones durante el trayecto.
+</div>
+
+</div>
+
+</section>
+  
+  
+  <section class="videos-section">
+    
+
+<h2 class="video-titulo">Conciencia y Respeto en el Transporte Público</h2>
+    
+
+<div class="video-container">
+
+<iframe 
+src="https://www.youtube.com/embed/iSHGFahIVyk"
+title="Conciencia en transporte público"
+allowfullscreen>
+</iframe>
+
+<p class="video-descripcion">
+Este video muestra la importancia de respetar los espacios preferentes dentro del transporte público. 
+Promueve la empatía y la responsabilidad social para garantizar que adultos mayores, personas con discapacidad 
+y mujeres embarazadas puedan viajar con seguridad y dignidad. La convivencia ciudadana es clave para mejorar 
+la experiencia del transporte urbano.
+</p>
+
+</div>
+
+
+<br><br>
+
+
+<h2 class="video-titulo">Educación y Cultura Ciudadana en la Movilidad</h2>
+
+<div class="video-container">
+
+<iframe 
+src="https://www.youtube.com/embed/0FNGOkoioCw"
+title="Cultura en transporte público"
+allowfullscreen>
+</iframe>
+
+<p class="video-descripcion">
+Este material audiovisual resalta la importancia de fomentar una cultura de respeto y educación dentro del 
+transporte público. La movilidad urbana no solo depende de la infraestructura, sino también del comportamiento 
+de los usuarios, quienes deben contribuir a un ambiente seguro, inclusivo y respetuoso para toda la comunidad.
+</p>
+
+</div>
+
+</section>
+  
+  
+ 
+
+<section class="tarifas-section">
+
+<h2 class="tarifas-title">
+
+Tarifas Oficiales del Servicio
+
+</h2>
+
+<div class="tarifas-card">
+
+<div class="tarifa estudiante">
+🎓 Estudiantes: $7.00 MXN
+</div>
+
+<div class="tarifa mayor">
+♿ Adultos mayores y discapacidad: $5.00 MXN
+</div>
+
+<div class="tarifa adulto">
+👤 Adultos: $11.00 MXN
+</div>
+
+<div class="tarifa-aviso">
+⚠ El incumplimiento de tarifas será sancionado.
+</div>
+
+</div>
+
+</section>
+
+
+<section class="seccion">
+
+<h2>📍 Ubicación de Paradas Oficiales</h2>
+
+<button class="btn"
+onclick="window.open('https://maps.google.com/?q=paradas+de+camion+guanajuato','_blank')">
+Buscar Paradas de Camión
+</button>
+
+<iframe id="mapaParadas"
+src="https://maps.google.com/maps?q=guanajuato&t=&z=13&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</section>
+
+
+<!-- 🚨 REPORTAR PROBLEMA -->
+
+<section class="seccion">
+
+<h2>🚨 Reportar Problema</h2>
+
+<p class="descripcion-reporte">
+Ayúdanos a mejorar el transporte público reportando incidencias del servicio.
+</p>
+
+<select id="tipoProblema">
+<option>Autobús lleno</option>
+<option>Retraso del autobús</option>
+<option>Chofer grosero</option>
+<option>Parada en mal estado</option>
+<option>Problema con tarifa</option>
+</select>
+
+<br><br>
+
+<input type="text" id="ubicacionProblema"
+placeholder="📍 Ubicación del problema">
+
+<br><br>
+
+<textarea id="comentarioProblema"
+placeholder="✏ Describe el problema"></textarea>
+
+<br><br>
+
+<button onclick="enviarReporte()" class="btn-reporte">
+🚨 Enviar Reporte
+</button>
+
+<p id="mensajeReporte"></p>
+
+</section>
+
+
+<div class="section">
+
+<button class="btn" onclick="descargarCredencial()">
+Descargar Credencial
+</button>
+
+<button class="btn" onclick="volverInicio()">
+Regresar Inicio
+</button>
+
+</div>
+  
+  
+  
+
+<footer>
+  
+  © Maria Barrientos, Alberto Ochoa, Sandoval Rodriguez,  
+Carlos Origel, Emiliano Carrales
+
+
+<center>Proyecto Innovatec 2026 | 
+  UrbanMove</center>
+
+</footer>
+
+</div>
+
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
